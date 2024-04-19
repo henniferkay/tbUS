@@ -77,6 +77,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+tb_us_nn_model_states_grouped.ipynb
 
 # IPython
 profile_default/
