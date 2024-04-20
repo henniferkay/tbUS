@@ -41,11 +41,13 @@ Rate is defined as the number of the event (TB cases) per 100,000 persons.
 #### Modeling
 We tried fitting a couple of different ML models to compare the TB trends with and without COVID. Regardless of the model type, we were interested in predicting TB cases (dependent or Y variable) over the years (predictor or X variable).
 
-We attempted fitting a neural network model, which resulted in huge loss and low accuracy values: our deep learning process is documented in `tb_us_nn_model.ipynb`.
+We attempted fitting a neural network model, which resulted in huge loss and low accuracy values (0%): our deep learning process is documented in `tb_us_nn_model.ipynb`.
 
 We decided that time series forecasting was the best approach to modeling the TB case data. Time series forecasting predicts the future values based on trends learned from the historical data. We trained a linear regression model on the TB case data from 2000-2018 and made it predict the case counts for the following years from 2019-2022.
 
 Different combinations of linear regression models were fitted and compared based on performance metrics including R-squared, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and standard deviation.
+
+We provided full code and modeling process in `linear_reg_cases.ipynb`.
 
 ### Results
 We found that splitting the TB case data into testing and training sets and accounting for time lags produced the most optimal model (smallest MSE). 
