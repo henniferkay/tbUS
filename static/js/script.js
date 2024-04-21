@@ -50,13 +50,13 @@ const init = async year => {
                 fillOpacity:1
                 ,
                 fillColor: 
-                    cases > 2000 ? 'rgb(128, 0, 128)': 
-                    cases > 1500 ? 'rgb(237,67,80)' : 
-                    cases > 1000 ? 'rgb(51,77,143)' : 
-                    cases > 500 ? 'rgb(241,106,106)' : 
-                    cases > 300 ? 'rgb(204,204,204)' : 
-                    cases > 100 ? 'rgb(255,179,125)' :
-                    cases > 50 ? 'rgb(105,123,170': 'rgb(23,134,136)'
+                    cases > 1000 ? 'rgb(165,0,38)' : 
+                    cases > 500  ? 'rgb(215,48,39)' : 
+                    cases > 200  ? 'rgb(244,109,67)': 
+                    cases > 100  ? 'rgb(253,174,97)' : 
+                    cases > 50   ? 'rgb(254,224,144)' : 
+                    cases > 20   ? 'rgb(224,243,248)' :
+                    cases > 10   ? 'rgb(171,217,233)' :'rgb(116,173,209)'
 
             };
         }
@@ -64,8 +64,8 @@ const init = async year => {
         console.log(layer)
         const {rates, cases,name} = layer.feature.properties;
         return `
-            <h5>State: ${name}<br> Rates: ${rates}
-            <br>Cases: ${cases}</h5>
+            <h3>State: ${name}<br> Rates: ${rates}
+            <br>Cases: ${cases}</h3>
         `;
     }).addTo(map);
 
@@ -73,13 +73,13 @@ const init = async year => {
 init();
 
 function getColor(cases) {
-    return cases > 2000 ? 'rgb(128, 0, 128)' :
-           cases > 1500 ? 'rgb(237, 67, 80)' :
-           cases > 1000 ? 'rgb(51, 77, 143)' :
-           cases > 500 ? 'rgb(241, 106, 106)' :
-           cases > 300 ? 'rgb(204, 204, 204)' :
-           cases > 100 ? 'rgb(255, 179, 125)' :
-           cases > 50 ? 'rgb(105, 123, 170)' : 'rgb(23, 134, 136)'};
+    return cases > 1000 ? 'rgb(165,0,38)' :
+            cases > 500  ? 'rgb(215,48,39)' : 
+            cases > 200  ? 'rgb(244,109,67)': 
+            cases > 100  ? 'rgb(253,174,97)' : 
+            cases > 50   ? 'rgb(254,224,144)' : 
+            cases > 20   ? 'rgb(224,243,248)' :
+            cases > 10   ? 'rgb(171,217,233)' :'rgb(116,173,209)'};
 
 // Create legend control
 let legend = L.control({ position: 'bottomright' });
