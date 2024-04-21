@@ -17,7 +17,7 @@ Due to the Novel Coronavirus that began to spread in the U.S. at the beginning o
 
 There was a significant drop in TB cases reported ([20.1% change in rate](https://www.cdc.gov/tb/statistics/surv/surv2022/images/Slide4.PNG)) from 2019 to 2020. Following this sharp decline, TB cases rose in 2021 and 2022, but remain lower compared with 2019. At present, TB cases appear to be returning to pre-pandemic levels. However, the pandemic's impact on TB control has yet to be thoroughly explored.
 
-We wanted to gauge the effect of COVID on TB by using supervised machine learning. To achieve this endeavor, we developed a time-series linear regression model that is trained on TB surveillance data before 2019 and predicts the number of TB cases during 2019-2022 if COVID had not interrupted TB services.
+We wanted to gauge the effect of COVID on TB by using supervised machine learning. To achieve this endeavor, we developed a time-series linear regression model that is trained on TB surveillance data before 2019 and predicts the number of TB cases onwards if COVID had not interrupted TB services.
 
 ### Methods
 
@@ -34,7 +34,7 @@ We also mapped the TB cases and rates by year and state in JavaScript--please vi
 #### Definitions
 According to the CDC, a tuberculosis case is counted as a Confirmed Case if the patient meets the clinical case definition (as determined by a medical provider) or is laboratory confirmed (positive for TB on culture or Nucleic Acid Amplification Test). 
 
-A TB case is not to be confused with a latent TB Infection (LTBI) case. A person with LTBI breathed in TB bacteria and became infected at one point but has not turned into active TB disease and is not symptomatic or infectious.
+A TB case is not to be confused with a latent TB infection (LTBI) case. A person with LTBI breathed in TB bacteria and became infected at one point but has not turned into active TB disease and is not symptomatic or infectious.
 
 Rate is defined as the number of the event (TB cases) per 100,000 persons.
 
@@ -50,22 +50,24 @@ Different combinations of linear regression models were fitted and compared base
 We provided full code and model selection process in `linear_reg_cases.ipynb`.
 
 ### Results
-We found that splitting the TB case data into testing and training sets and accounting for time lags produced the most optimal model (smallest MSE). 
+We found that splitting the TB case data into testing and training sets and accounting for time lags produced the most optimal model (smallest MSE).
+
+<img src="Resources/model.png">
 
 The graph below shows the actual TB trends in blue while the predicted values are represented by a red line--there's a noticeable gap between predicted and actual numbers of TB cases. 
 
-<img src="Resources/figure1.png">
+<img src="Resources/actual_vs_predicted.png">
 
-Our model suggested that if the COVID pandemic had not caused disruptions in TB management and care, the number of TB cases per year would have been at a steady level around 8,900.
+Our model suggested that if the COVID pandemic had not caused disruptions in TB management and care, the number of TB cases per year would have been at a steady level around 8,900. The following table shows the predicted TB case counts and the differences between the predicted and actual reported values.
+
+<img src="Resources/predicted_val_dif.png">
 
 ### Limitations and Future Directions
-This was an ecological study of TB cases by state, not individual TB patients. The ecological study design, which focused on TB cases by geographical area (state), may limit the generalizability of our findings to individual-level associations and specific demographic or clinical factors that could influence TB outcomes.
+This is an ecological study analyzing TB cases at the state level, rather than focusing on individual TB patients. The ecological study design may limit the generalizability of our findings to individual-level associations and specific demographic or clinical factors that could influence TB outcomes.
 
-We did not add explanatory variables to our model because we could not find appropriate data by state and year on risk factors for TB (e.g. migration rate, prior TB or latent infection population size). Therefore, we were only able to perform a univariate time series analysis that looks at the states' overall TB cases over the years.
+We did not add explanatory variables to our model because we could not find appropriate data by state and year on risk factors for TB (e.g. migration rate, prior TB or latent infection population size). Therefore, we were only able to perform a univariate time series analysis that looks at the states' overall TB cases over the years. While this limitation is important to note, it underscores the need for further research to explore the potential implications for TB control efforts.
 
-It would be interesting to expand our analysis to other countries so that we could compare the impacts of the pandemic on TB between high and low TB burden areas. Adding countries as an explanatory variable may also improve our model or allow for other modeling methods such as neural network and random forest.
-
-To deepen our understanding of the impacts of COVID on TB, it would be worthwhile looking at the disease synergy between TB and COVID. Previous studies have alluded that COVID patients with prior or concurrent TB are more likely to die in high TB burden settings. Analyzing more granular data collected from individual TB patients and their clinical outcomes is warranted.
+To deepen our understanding of the impacts of COVID on TB, it would be worthwhile looking at the disease synergy between TB and COVID. Previous studies have alluded that COVID patients with prior or concurrent TB are more likely to die in high TB burden settings. Analyzing more granular data collected from individual TB patients and their clinical outcomes is warranted. Additionally, expanding our analysis to other countries could provide valuable insights into how the pandemic's impacts vary between high and low TB burden areas.
 
 ### Conclusion
 Even though this analysis carries limitations and provides an alternative snapshot of COVID's impacts on TB in the U.S., our model sheds light on public health ramifications of the pandemic.
