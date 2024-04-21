@@ -7,13 +7,13 @@ Authors: Daniel Kenet, Jennifer Kim, Kat McEldowney, and Michelle Minkowitz (aka
 Date: April 22, 2024
 
 ### Introduction
-Tuberculosis (TB) is an airborne infectious disease caused by *Mycobacterium tuberculosis*. Despite advancements in treatment and prevention programs, tuberculosis (TB) remains a serious global concern. This is particularly challenging in developing countries with limited laboratory facilities. According to the World Health Organization, about [1.5 million people](https://www.who.int/health-topics/tuberculosis#tab=tab_1) die from the disease every year, making TB the world’s top infectious killer.
+Tuberculosis (TB) is an airborne infectious disease caused by *Mycobacterium tuberculosis*. Despite advancements in treatment and prevention programs, TB remains a serious global concern. This is particularly challenging in developing countries with limited laboratory facilities. According to the World Health Organization, about [1.5 million people](https://www.who.int/health-topics/tuberculosis#tab=tab_1) die from the disease every year, making TB the world’s top infectious killer.
 
 In the United States specifically, the Centers for Disease Control and Prevention (CDC) started a national surveillancce system for TB cases in 1953. The introduction of antimicrobial therapy led to a decrease in the incidence rate from 53 to 9.3 cases per 100,000 persons between 1953 and 1985. However, in the late 1980s, the rate increased, reaching a peak of 10.5 cases per 100,000 persons in 1992, which correlated with the onset of the acquired immunodeficiency syndrome (AIDS) epidemic. 
 
 When concerns about AIDS and TB were recognized in the early 1990s, the government increased federal funding and implemented stronger TB control efforts. Due to these interventions, the rate went down to 5.8 per 100,000 persons in 2000. The rate had reached a steady level at about 3.0 per 100,000 persons from 2013 up until 2019.
 
-Due to the Novel Coronavirus that began to spread in the U.S. at the beginning of 2020, clinics and healthcare facilities had to shut down and steer their resources to COVID. The disruptions in healthcare services, coupled with delayed diagnosis and reduced access to care due to lockdown measures, have contributed to the challenges faced in TB control during the COVID-19 pandemic.
+Due to the Novel Coronavirus that began to spread in the U.S. at the beginning of 2020, clinics and healthcare facilities had to shut down and steer their resources to COVID. The disruptions in healthcare services, coupled with delayed diagnosis and reduced access to care due to lockdown measures, have contributed to the challenges faced in TB control during the COVID-19 pandemic ([Falzon et al. 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10546619/)).
 
 There was a significant drop in TB cases reported ([20.1% change in rate](https://www.cdc.gov/tb/statistics/surv/surv2022/images/Slide4.PNG)) from 2019 to 2020. Following this sharp decline, TB cases rose in 2021 and 2022, but remain lower compared with 2019. At present, TB cases appear to be returning to pre-pandemic levels. However, the pandemic's impact on TB control has yet to be thoroughly explored.
 
@@ -47,7 +47,7 @@ We decided that time series forecasting was the best approach to modeling the TB
 
 Different combinations of linear regression models were fitted and compared based on performance metrics including R-squared, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and standard deviation.
 
-We provided full code and modeling process in `linear_reg_cases.ipynb`.
+We provided full code and model selection process in `linear_reg_cases.ipynb`.
 
 ### Results
 We found that splitting the TB case data into testing and training sets and accounting for time lags produced the most optimal model (smallest MSE). 
@@ -58,12 +58,20 @@ The graph below shows the actual TB trends in blue while the predicted values ar
 
 Our model suggested that if the COVID pandemic had not caused disruptions in TB management and care, the number of TB cases per year would have been at a steady level around 8,900.
 
-### Limitations
-This was an ecological study of TB cases by a geographical area (state), not individual TB patients. We did not add explanatory variables to our model because we could not find appropriate data by state and year on risk factors for TB (e.g. migration rate, prior TB or latent infection population size). Therefore, we were only able to perform a univariate time series analysis that looks at the states' overall TB cases over the years.
+### Limitations and Future Directions
+This was an ecological study of TB cases by state, not individual TB patients. The ecological study design, which focused on TB cases by geographical area (state), may limit the generalizability of our findings to individual-level associations and specific demographic or clinical factors that could influence TB outcomes.
+
+We did not add explanatory variables to our model because we could not find appropriate data by state and year on risk factors for TB (e.g. migration rate, prior TB or latent infection population size). Therefore, we were only able to perform a univariate time series analysis that looks at the states' overall TB cases over the years.
+
+It would be interesting to expand our analysis to other countries so that we could compare the impacts of the pandemic on TB between high and low TB burden areas. Adding countries as an explanatory variable may also improve our model or allow for other modeling methods such as neural network and random forest.
+
+To deepen our understanding of the impacts of COVID on TB, it would be worthwhile looking at the disease synergy between TB and COVID. Previous studies have alluded that COVID patients with prior or concurrent TB are more likely to die in high TB burden settings. Analyzing more granular data collected from individual TB patients and their clinical outcomes is warranted.
 
 ### Conclusion
 Even though this analysis carries limitations and provides an alternative snapshot of COVID's impacts on TB in the U.S., our model sheds light on public health ramifications of the pandemic.
 
 Timing is crucial in TB care--delayed diagnosis and treatment could further complicate the patient's disease status and overall health. If a significant portion of TB cases missed timely diagnosis and care due to impaired access to medical services, people might have undiagnosed or untreated TB longer than they should have been, increasing the pool of infectious individuals in the community.
 
-Our findings suggest the need to equip public health emergency preparedness for more rapid and smoother response to TB and other major diseases in future pandemics.
+Our findings underscore the need for ongoing monitoring and research to understand the long-term effects of the COVID-19 pandemic on TB and other infectious diseases. 
+
+Additionally, future studies should explore the disease synergy between TB and COVID-19, considering more granular data collected from individual TB patients and their clinical outcomes. This will help inform public health policies and preparedness efforts to ensure a more rapid and effective response to TB and other major diseases in future pandemics.
