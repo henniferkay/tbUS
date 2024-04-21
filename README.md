@@ -29,7 +29,7 @@ We analyzed tuberculosis surveillance data from 2000-2022 provided by the CDC.
 
 The original data consisted of TB cases and rates by year, state, sex, whether the patient was born in or outside the U.S., and race/ethnicity were downloaded as CSV files from the CDC's surveillance data portal called [AtlasPlus](https://www.cdc.gov/nchhstp/atlas/index.htm). We cleaned and consolidated the CSV tables into Pandas DataFrames in a Jupyter Notebook (see full code in `Dataframe_Merging.ipynb`).
 
-We also mapped the TB cases and rates by year and state in JavaScript--please visit our [webpage](deployed page) to explore the U.S. TB surveillance data.
+We also mapped the TB cases and rates by year and state in JavaScript--please visit our [webpage](https://henniferkay.github.io/tbUS/) to explore the U.S. TB surveillance data.
 
 #### Definitions
 According to the CDC, a tuberculosis case is counted as a Confirmed Case if the patient meets the clinical case definition (as determined by a medical provider) or is laboratory confirmed (positive for TB on culture or Nucleic Acid Amplification Test). 
@@ -50,7 +50,7 @@ Different combinations of linear regression models were fitted and compared base
 We provided full code and model selection process in `linear_reg_cases.ipynb`.
 
 ### Results
-We found that splitting the TB case data into testing and training sets and accounting for time lags produced the most optimal model (smallest MSE).
+We found that splitting the TB case data into testing and training sets and accounting for time lags produced the most optimal model (smallest MSE). Our final model is provided below:
 
 <img src="Resources/model.png">
 
@@ -58,9 +58,9 @@ The graph below shows the actual TB trends in blue while the predicted values ar
 
 <img src="Resources/actual_vs_predicted.png">
 
-Our model suggested that if the COVID pandemic had not caused disruptions in TB management and care, the number of TB cases per year would have been at a steady level around 8,900. The following table shows the predicted TB case counts and the differences between the predicted and actual reported values.
+Our model suggested that if the COVID pandemic had not caused disruptions in TB management and care, over 1,000 more TB cases would have been reported, and the case counts per year would have been at a steady level around 8,900. The following table shows the predicted TB case counts and the differences between the predicted and actual reported values.
 
-<img src="Resources/predicted_val_dif.png">
+<img src="Resources/predicted_val_dif.png" width="300">
 
 ### Limitations and Future Directions
 This is an ecological study analyzing TB cases at the state level, rather than focusing on individual TB patients. The ecological study design may limit the generalizability of our findings to individual-level associations and specific demographic or clinical factors that could influence TB outcomes.
