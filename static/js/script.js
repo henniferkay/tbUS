@@ -7,10 +7,19 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const init = async year => {
 
-    // let data = await (await fetch('/api/combined_data')).json();
+    // Clear existing layers from the map
+    map.eachLayer(layer => {
+        if (layer instanceof L.GeoJSON) {
+            map.removeLayer(layer);
+        }
+    });
+
+    // Load data
+    //let data = await (await fetch('/api/combined_data')).json();
     data = await (await fetch('static/Resources/complete_df.json')).json();
     states = await (await fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')).json()
-
+    
+    // Set default year and populate year dropdown
     if (year == undefined) {
 
         let years = [... new Set(Object.values(data.Year))];
@@ -23,32 +32,41 @@ const init = async year => {
         });
     };
 
+
+    // Filter data based on selected year 
     keys_filtered = Object.entries(data.Year).filter(arr=>arr[1]==year).map(arr=>arr[0])
     cases = keys_filtered.map(k => data.Cases[k]);
     rates = keys_filtered.map(k => data.Rate_per_100000[k]);
     rates.map( (rate, i) => states.features[i].properties.rates=rate);
     cases.map( (count, i) => states.features[i].properties.cases=count);
 
-//    Allows you to parse GeoJSON data and display it on the map 
+//    Parse GeoJSON data and display it on the map and create new L.geoJSON layer with updated styling and popup content
+
     L.geoJSON(states, {
         style: function ({properties:{cases}}) {
             return {
                 color: "black",
-                weight:1,
-                fillOpacity:.3,
+                weight:2,
+                fillOpacity:1
+                ,
                 fillColor: 
-                    cases > 2000 ? 'purple' : 
-                    cases > 1500 ? 'red' : 
-                    cases > 1000 ? 'blue' : 
-                    cases > 500 ? 'yellow' : 
-                    cases > 100 ? 'orange' :
-                    cases > 50 ? 'blue': 'green'
+                    cases > 2000 ? 'rgb(128, 0, 128)': 
+                    cases > 1500 ? 'rgb(237,67,80)' : 
+                    cases > 1000 ? 'rgb(51,77,143)' : 
+                    cases > 500 ? 'rgb(241,106,106)' : 
+                    cases > 300 ? 'rgb(204,204,204)' : 
+                    cases > 100 ? 'rgb(255,179,125)' :
+                    cases > 50 ? 'rgb(105,123,170': 'rgb(23,134,136)'
 
             };
         }
-    }).bindPopup(function ({feature:{properties:{rates}}}) {
-        
-        return `<h3>Rates: ${rates}</h3>`;
+    }).bindPopup(function (layer) {
+        const {rates, cases} = layer.feature.properties;
+        return `
+            <h3>State: ${states}</h3>
+            <h3>Rates: ${rates}</h3>
+            <h3>Cases: ${cases}</h3>
+        `;
     }).addTo(map);
 };
 init();
