@@ -14,18 +14,17 @@ nav {
 }
 
 #map {
-    height: 100vh;
-    width: 60%;
-    height:40vh;
-    margin: 10% 20%;
+    height: 85vh;
+    margin-top: 15vh;
     border: 8px solid rgb(51,77,143);
     border-radius: 10px;
 }
 
-#container {
-    margin: 10%;
-    font-family: Arial, sans-serif;
-    font-size: 1rem
+#banner{
+    position:fixed;
+    top: 0;
+    height: 15vh;
+    width: 100%;
 }
 
 select {
@@ -41,4 +40,24 @@ h3 {
     font-family: Arial, sans-serif; 
     text-align: center; 
     margin-bottom: 20px; 
+}
+
+i{
+    padding: 4px 20px;
+    margin-right: 7px;
+    border: 1px solid black
+}
+
+.legend{
+    background:rgb(51,77,143);
+    color: white;
+    padding:7px;
+    font-family: Arial, sans-serif;  
+    border: 2px solid black;
+    border-radius: 7px;
+    font-size: 1.5rem;
+}
+
+.legend strong {
+    font-size: 2rem ;
 }

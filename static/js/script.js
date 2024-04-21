@@ -1,5 +1,5 @@
 
-let map = L.map('map').setView([37.8, -96], 4);
+let map = L.map('map').setView([37.8, -96], 6);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -61,13 +61,43 @@ const init = async year => {
             };
         }
     }).bindPopup(function (layer) {
-        const {rates, cases} = layer.feature.properties;
+        console.log(layer)
+        const {rates, cases,name} = layer.feature.properties;
         return `
-            <h3>State: ${states}</h3>
-            <h3>Rates: ${rates}</h3>
-            <h3>Cases: ${cases}</h3>
+            <h5>State: ${name}<br> Rates: ${rates}
+            <br>Cases: ${cases}</h5>
         `;
     }).addTo(map);
+
 };
 init();
 
+function getColor(cases) {
+    return cases > 2000 ? 'rgb(128, 0, 128)' :
+           cases > 1500 ? 'rgb(237, 67, 80)' :
+           cases > 1000 ? 'rgb(51, 77, 143)' :
+           cases > 500 ? 'rgb(241, 106, 106)' :
+           cases > 300 ? 'rgb(204, 204, 204)' :
+           cases > 100 ? 'rgb(255, 179, 125)' :
+           cases > 50 ? 'rgb(105, 123, 170)' : 'rgb(23, 134, 136)'};
+
+// Create legend control
+let legend = L.control({ position: 'bottomright' });
+
+legend.onAdd = function (map) {
+    let div = L.DomUtil.create('div', 'legend');
+    let labels = ['<strong>Cases</strong>'];
+
+    // Array of color ranges and labels
+    let colors = [0, 50, 100, 300, 500, 1000, 1500, 2000];
+    for (let i = 0; i < colors.length; i++) {
+        div.innerHTML +=
+            labels.push(
+                '<i style="background:' + getColor(colors[i] + 1) + '"></i> ' +
+                (colors[i] + 1) + (colors[i + 1] ? '&ndash;' + colors[i + 1] : '+'));
+    }
+    div.innerHTML = labels.join('<br>');
+    return div;
+};
+
+legend.addTo(map);
