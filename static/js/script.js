@@ -64,8 +64,8 @@ const init = async year => {
         console.log(layer)
         const {rates, cases,name} = layer.feature.properties;
         return `
-            <h3>State: ${name}<br> Rates: ${rates}
-            <br>Cases: ${cases}</h3>
+            <h2>State: ${name}<br> Rates: ${rates}
+            <br>Cases: ${cases}</h2>
         `;
     }).addTo(map);
 
