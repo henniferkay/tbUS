@@ -16,18 +16,18 @@ nav {
 
 #map {
     height: 60vh;
-    margin-top: 17vh;
+    margin: 17vh;
     border: 8px solid rgb(51,77,143);
     border-radius: 20px;
 }
 
 #banner{
-    position:fixed;
-    top: 0;
-    height: auto;
+    /* position:fixed; */
+    /* top: 0; */
+    height: 15vh;
     text-align: center;
     font-family: Arial, sans-serif;
-    width: 100%;
+    /* width: 100%; */
 }
 
 select {
