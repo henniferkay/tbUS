@@ -15,10 +15,10 @@ nav {
 }
 
 #map {
-    height: 85vh;
-    margin-top: 15vh;
+    height: 60vh;
+    margin-top: 17vh;
     border: 8px solid rgb(51,77,143);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 #banner{
@@ -29,14 +29,15 @@ nav {
 }
 
 select {
-    width: 15%;
+    width: 4%;
     font-family: Arial, sans-serif;
     font-size: 2rem;
     text-align: center;
+    margin-left: 1vh;
 }
 
 h3 {
-    font-size: 30px; 
+    font-size: 50px; 
     color: #333; 
     font-family: Arial, sans-serif; 
     text-align: center; 
@@ -61,4 +62,8 @@ i{
 
 .legend strong {
     font-size: 2rem ;
+}
+
+#tile {
+    margin-left: 10px;
 }

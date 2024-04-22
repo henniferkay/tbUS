@@ -1,5 +1,5 @@
 
-let map = L.map('map').setView([37.8, -96], 6);
+let map = L.map('map').setView([37.8, -96], 5.4);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -74,12 +74,14 @@ init();
 
 function getColor(cases) {
     return cases > 1000 ? 'rgb(165,0,38)' :
-            cases > 500  ? 'rgb(215,48,39)' : 
-            cases > 200  ? 'rgb(244,109,67)': 
-            cases > 100  ? 'rgb(253,174,97)' : 
-            cases > 50   ? 'rgb(254,224,144)' : 
-            cases > 20   ? 'rgb(224,243,248)' :
-            cases > 10   ? 'rgb(171,217,233)' :'rgb(116,173,209)'};
+           cases > 500  ? 'rgb(215,48,39)' :
+           cases > 200  ? 'rgb(244,109,67)' :
+           cases > 100  ? 'rgb(253,174,97)' :
+           cases > 50   ? 'rgb(254,224,144)' :
+           cases > 20   ? 'rgb(224,243,248)' :
+           cases > 10   ? 'rgb(171,217,233)' :
+                           'rgb(116,173,209)';
+};
 
 // Create legend control
 let legend = L.control({ position: 'bottomright' });
@@ -89,7 +91,7 @@ legend.onAdd = function (map) {
     let labels = ['<strong>Cases</strong>'];
 
     // Array of color ranges and labels
-    let colors = [0, 50, 100, 300, 500, 1000, 1500, 2000];
+    let colors = [0, 10, 20, 50, 100, 200, 500, 1000];
     for (let i = 0; i < colors.length; i++) {
         div.innerHTML +=
             labels.push(
