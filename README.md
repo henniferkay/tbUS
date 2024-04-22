@@ -6,7 +6,7 @@ Authors: Daniel Kenet, Jennifer Kim, Kat McEldowney, and Michelle Minkowitz (aka
 
 Date: April 22, 2024
 
-### Introduction
+<span style="color:green"> Introduction</span>
 Tuberculosis (TB) is an airborne infectious disease caused by *Mycobacterium tuberculosis*. Despite advancements in treatment and prevention programs, TB remains a serious global concern. This is particularly challenging in developing countries with limited laboratory facilities. According to the World Health Organization, about [1.5 million people](https://www.who.int/health-topics/tuberculosis#tab=tab_1) die from the disease every year, making TB the world’s top infectious killer.
 
 In the United States specifically, the Centers for Disease Control and Prevention (CDC) started a national surveillancce system for TB cases in 1953. The introduction of antimicrobial therapy led to a decrease in the incidence rate from 53 to 9.3 cases per 100,000 persons between 1953 and 1985. However, in the late 1980s, the rate increased, reaching a peak of 10.5 cases per 100,000 persons in 1992, which correlated with the onset of the acquired immunodeficiency syndrome (AIDS) epidemic. 
