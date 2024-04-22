@@ -43,7 +43,7 @@ We tried fitting a couple of different ML models to compare the TB trends with a
 
 We attempted fitting a neural network model, which resulted in huge loss and low accuracy values (0%): our deep learning process is documented in `tb_us_nn_model.ipynb`.
 
-We decided that time series forecasting was the best approach to modeling the TB case data. Time series forecasting predicts the future values based on trends learned from the historical data. We trained a linear regression model on the TB case data from 2000-2018 and made it predict the case counts for the following years from 2019-2022.
+We decided that time series forecasting was the best approach to modeling the TB case data. Time series forecasting predicts the future values based on trends learned from the historical data. We trained a linear regression model on the TB case data from 2000-2018 and made it predict the case counts for the following years from 2019-2022. We added lags to the data set to auto-corrolate the each years data with the two previous years. This allowed us to better model each years number of reported cases with the previous years data and improve the accuracy of the forecastsing. We applied the model to data sets with two years of lags and without for comparison.
 
 Different combinations of linear regression models were fitted and compared based on performance metrics including R-squared, Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and standard deviation.
 
