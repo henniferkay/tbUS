@@ -33,7 +33,7 @@ select {
     font-family: Arial, sans-serif;
     font-size: 2rem;
     text-align: center;
-    margin-left: 1vh;
+    margin: auto;
 }
 
 h3 {
