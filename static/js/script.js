@@ -1,5 +1,5 @@
 
-let map = L.map('map').setView([37.8, -96], 5.4);
+let map = L.map('map').setView([37.8, -96], 4);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -64,8 +64,8 @@ const init = async year => {
         console.log(layer)
         const {rates, cases,name} = layer.feature.properties;
         return `
-            <h3>State: ${name}<br> Rates: ${rates}
-            <br>Cases: ${cases}</h3>
+            <h2>State: ${name}<br> Rates: ${rates}
+            <br>Cases: ${cases}</h2>
         `;
     }).addTo(map);
 
